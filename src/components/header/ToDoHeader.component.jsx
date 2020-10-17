@@ -4,8 +4,6 @@ import AddAndFilter from "../add-item-filter-item/add-item-filter-item.component
 
 import {
   getItems,
-  applyFilter,
-  filteredItems,
   addItems,
   getExistingItems,
   setItems
@@ -31,7 +29,6 @@ class ToDoHeader extends React.Component {
 
   handleChange = (e) => {
     e.preventDefault();
-    console.log("Handle Change call " + e.target.name);
     this.setState(
       {
         [e.target.name]: e.target.value,
@@ -56,27 +53,27 @@ class ToDoHeader extends React.Component {
   };
 
   handleCompletion = (item) => {
-    console.log(item);
+    
     const items = getExistingItems();
     items.map((i) => (i.id === item.id ? (i.isActive = !i.isActive) : i));
     setItems(items);
   };
 
   addTask = () => {
-    console.log("Adding task fiield existing value " + this.state.enableInput);
+    
     if (this.state.enableInput && !this.state.addingTask) {
-      console.log("If....");
+      
       this.setState({ addingTask: !this.state.addingTask });
       this.setState({ searchingTask: !this.state.searchingTask });
       this.setState({ placeholder: "Add task" });
     } else {
-      console.log("Else...");
+      
       this.setState({ enableInput: !this.state.enableInput });
     }
   };
 
   searchTask = () => {
-    console.log("search task field existing value " + this.state.enableInput);
+    
     if (this.state.enableInput && !this.state.searchingTask) {
       this.setState(
         {
@@ -107,7 +104,7 @@ class ToDoHeader extends React.Component {
   };
 
   activeFilter = () => {
-    console.log("Active Filter before" + this.state.isActiveFilter);
+    
 
     this.setState(
       {
@@ -119,7 +116,7 @@ class ToDoHeader extends React.Component {
         this.setState({ items: getItems(this.state) });
       }
     );
-    console.log("Active Filter " + this.state.isActiveFilter);
+    
   };
 
   completedFilter = () => {
@@ -136,7 +133,7 @@ class ToDoHeader extends React.Component {
   };
 
   render() {
-    console.log(" Header render...");
+    
     return (
       <div className="todolist">
         <h1>Simple To Do App</h1>
@@ -159,7 +156,7 @@ class ToDoHeader extends React.Component {
         <AddAndFilter
           addTask={this.addTask}
           searchTask={this.searchTask}
-          itemCount={this.state.items.length}
+          itemCount={this.state.items ? this.state.items.length : 0}
           allFilter={this.allFilter}
           activeFilter={this.activeFilter}
           completedFilter={this.completedFilter}
