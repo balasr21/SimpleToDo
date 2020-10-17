@@ -1,0 +1,28 @@
+
+
+h1{
+    text-align: center;
+    padding:5px;
+    margin:5px auto;
+}
+
+.todolist {
+    background-color: #FFF;
+    padding: 20px 20px 10px 20px;
+    width: 600px;
+    margin: 30px auto;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    position: relative;
+}
+
+.task-input{
+    display: block;
+    padding:5px;
+    margin:5px auto;
+    width:550px;
+    height: 40px;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+}
